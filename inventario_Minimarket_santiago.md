@@ -1,4 +1,4 @@
-# Sistema Integrado de Punto de Venta (POS) y Control de Inventarios
+#  Control de Inventario
 ## Minimarket "Santiago"
 
 > **Enlace al Diseño Conceptual (Draw.io):** [Ver Diagrama Entidad-Relación](https://app.diagrams.net/#G1dqWPp799ApF7jr2GaE9rdTR8FTfAHxls#%7B%22pageId%22%3A%220%22%7D)
