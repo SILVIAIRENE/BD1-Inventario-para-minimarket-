@@ -31,16 +31,17 @@ Finalmente, el sistema debe registrar cada operación de venta detallando las ca
 
 ## 3. Modelo Conceptual (Entidades y Atributos)
 
-* **USUARIO:** `ID_Usuario` (PK), Nombre, Apellido, Username, Email, Password, Estado, Es_Admin.
-* **CATEGORIA:** `ID_Categoria` (PK), Nombre, Descripción.
-* **PRODUCTO:** `ID_Producto` (PK), Barcode, Nombre, Descripción, Stock_Min, Precio_Costo, Precio_Venta, Unidad.
-* **LOTE:** `ID_Lote` (PK), Codigo_Lote, Fecha_Vencimiento, Cant_Inicial, Cant_Actual.
-* **PERSONA:** `ID_Persona` (PK), Nombre, Apellido, Empresa, Dirección, Teléfono, Tipo_Persona.
-* **CAJA:** `ID_Caja` (PK), Cash_In, Cash_Out, Estado, Fecha_Apertura, Fecha_Cierre.
-* **GASTO:** `ID_Gasto` (PK), Descripción, Monto, Fecha.
-* **VENTA:** `ID_Venta` (PK), Total, Monto_Recibido, Descuento, Fecha.
-* **METODO_PAGO:** `ID_Metodo_Pago` (PK), Nombre, Estado.
-* **CONFIGURACION:** `ID_Configuracion` (PK), Clave, Valor.
+- **USUARIO:** `ID_Usuario` (PK), Nombre, Apellido, Username, Email, Password, Estado, Es_Admin.
+- **CATEGORIA:** `ID_Categoria` (PK), Nombre, Descripción.
+- **PRODUCTO:** `ID_Producto` (PK), Barcode, Nombre, Descripción, Stock_Min, Precio_Costo, Precio_Venta, Unidad.
+- **LOTE:** `ID_Lote` (PK), Codigo_Lote, Fecha_Vencimiento, Cant_Inicial, Cant_Actual.
+- **PERSONA:** `ID_Persona` (PK), Nombre, Apellido, Empresa, Dirección, Teléfono, Tipo_Persona.
+- **CAJA:** `ID_Caja` (PK), Cash_In, Cash_Out, Estado, Fecha_Apertura, Fecha_Cierre.
+- **GASTO:** `ID_Gasto` (PK), Descripción, Monto, Fecha.
+- **VENTA:** `ID_Venta` (PK), Total, Monto_Recibido, Descuento, Fecha.
+- **DETALLE_VENTA:** `ID_Detalle` (PK), Cantidad, Precio_Historico, Subtotal *(Entidad asociativa)*.
+- **METODO_PAGO:** `ID_Metodo_Pago` (PK), Nombre, Estado.
+- **CONFIGURACION:** `ID_Configuracion` (PK), Clave, Valor.
 
 ### Relaciones y Cardinalidades Principales
 * **CATEGORIA (1) — (N) PRODUCTO** (*CLASIFICA*)
@@ -51,9 +52,8 @@ Finalmente, el sistema debe registrar cada operación de venta detallando las ca
 * **CAJA (1) — (N) VENTA** (*REALIZA*)
 * **PERSONA (1) — (N) VENTA** (*COMPRA*)
 * **METODO_PAGO (1) — (N) VENTA** (*PAGA*)
-* **VENTA (N) — (M) PRODUCTO** (*CONTIENE* — Atributos propios de la relación: `Cantidad`, `Precio_Historico`)
-
----
+* **VENTA (1) — (N) DETALLE_VENTA** (*GENERA / CONTIENE*)
+* **PRODUCTO (1) — (N) DETALLE_VENTA** (*INCLUYE*)
 
 ## 4. Anexo: Entrevistas
 
