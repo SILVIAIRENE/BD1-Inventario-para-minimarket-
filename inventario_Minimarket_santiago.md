@@ -122,3 +122,20 @@ Finalmente, el sistema debe registrar cada operación de venta detallando las ca
     *R:* Sí, para avisar oportunamente al administrador sobre productos agotados o por agotarse.
 15. **¿Qué expectativas tiene del nuevo sistema POS?**  
     *R:* Eliminar el estrés de cálculos manuales, agilizar arqueos de caja y optimizar la atención al cliente.
+
+
+    ---
+
+### 5.5. Matriz Resumen del Proceso de Normalización
+
+A modo de síntesis y para evidenciar el recorrido metodológico aplicado sobre el sistema del Minimarket "Santiago", la siguiente tabla detalla cómo se estructuraron las 11 tablas del sistema, relacionando cada nivel de normalización con el problema operativo específico que vino a resolver:
+
+| Nivel / Forma Normal | Entidades / Tablas Generadas | Problema Operativo y Anomalía Resuelta |
+| :--- | :--- | :--- |
+| **Primera Forma Normal (1FN)** | `VENTA`, `DETALLE_VENTA` | **Eliminación de grupos repetitivos:** Se rompió la tabla plana (0FN) separando la cabecera del ticket de sus líneas de compra, garantizando atomicidad y congelando el histórico de precios por ítem. |
+| **Segunda Forma Normal (2FN)** | `PRODUCTO`, `LOTE` | **Eliminación de dependencias parciales:** Se desacoplaron los datos maestros del artículo y las partidas físicas de inventario, permitiendo un control estricto de stock mínimo, costos y caducidades  sin duplicidad. |
+| **Tercera Forma Normal (3FN)** | `CATEGORIA`, `PERSONA`, `METODO_PAGO` | **Eliminación de dependencias transitivas:** Se aislaron los catálogos fijos y el directorio unificado de clientes/proveedores, evitando que los atributos no clave dependan unos de otros. |
+| **Tercera Forma Normal (3FN - Control)** | `CAJA`, `GASTO` | **Trazabilidad operacional:** Se estructuró el control estricto de turnos, aperturas con base monetaria (`Cash_In`) y la justificación formal de salidas menores de efectivo. |
+| **Soporte y Seguridad** | `CONFIGURACION`, `USUARIO` | **Segregación de roles y parámetros:** Se centralizó la configuración global del negocio clave-valor y se establecieron permisos diferenciados entre administradores y cajeros. |
+
+---
